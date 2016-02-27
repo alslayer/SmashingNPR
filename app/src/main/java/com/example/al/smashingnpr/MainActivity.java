@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -17,6 +18,10 @@ public class MainActivity extends Activity {
     ListView lstFeed1;
     ListView lstFeed2;
     ListView lstFeed3;
+    TextView text1;
+    TextView text2;
+    TextView text3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +49,12 @@ public class MainActivity extends Activity {
         lstFeed1 = (ListView) findViewById(R.id.lstFeed1);
         lstFeed2 = (ListView) findViewById(R.id.lstFeed2);
         lstFeed3 = (ListView) findViewById(R.id.lstFeed3);
+        final TextView text1 = (TextView) findViewById(R.id.text1);
+//        TextView text2;
+//        TextView text3;
 
         //Read Rss
-        ReadRss readRss=new ReadRss(this, lstFeed1, lstFeed2, lstFeed3);
+        final ReadRss readRss=new ReadRss(this, lstFeed1, lstFeed2, lstFeed3);
         readRss.execute();
 
         // ListView Item Click Listener
@@ -58,8 +66,16 @@ public class MainActivity extends Activity {
                 int itemPosition = position;
                 // ListView Clicked item value
                 String itemValue = (String) lstFeed1.getItemAtPosition(position);
+                // Hide Listview
+                lstFeed1.setVisibility(View.INVISIBLE);
+                text1.setVisibility(View.VISIBLE);
+
+                //This is the end finally
+                String title = (String) readRss.feedItems1.get(position).getTitle();
+                text1.setText(title);
+
                 // Show Alert
-                Toast.makeText(getApplicationContext(),"Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG).show();
             }
 
         });
