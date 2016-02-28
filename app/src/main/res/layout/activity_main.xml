@@ -36,15 +36,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="howdy"
+                    <Button
+                        android:id="@+id/btnBack1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btnBack1text"
                         android:visibility="gone"
-                        />
-
+                        android:onClick="btnBack1Click"/>
+                    <TextView
+                    android:id="@+id/txtTitle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtTitle1text"
+                    android:visibility="gone"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:paddingTop="25dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtBody1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtBody1text"
+                        android:visibility="gone"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:paddingTop="10dp" />
                     <ListView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -56,11 +74,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
+                    <Button
+                        android:id="@+id/btnBack2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btnBack2text"
+                        android:visibility="gone"
+                        android:onClick="btnBack2Click"/>
+                    <TextView
+                        android:id="@+id/txtTitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtTitle2text"
+                        android:visibility="gone"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:paddingTop="25dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtBody2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtBody2text"
+                        android:visibility="gone"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:paddingTop="10dp" />
                     <ListView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/lstFeed2" />
+                        android:id="@+id/lstFeed2"
+                        android:paddingTop="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,12 +113,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
+                    <Button
+                        android:id="@+id/btnBack3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btnBack3text"
+                        android:visibility="gone"
+                        android:onClick="btnBack3Click"/>
+                    <TextView
+                        android:id="@+id/txtTitle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtTitle3text"
+                        android:visibility="gone"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:paddingTop="25dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtBody3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtBody3text"
+                        android:visibility="gone"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:paddingTop="10dp"
+                        />
                     <ListView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/lstFeed3" />
+                        android:id="@+id/lstFeed3"
+                        android:paddingTop="10dp" />
                 </LinearLayout>
+
             </FrameLayout>
         </LinearLayout>
     </TabHost>

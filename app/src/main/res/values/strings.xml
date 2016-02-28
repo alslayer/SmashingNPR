@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Smashing NPR</string>
+    <string name="btnBack1text">Back to Feed</string>
+    <string name="btnBack2text">Back to Feed</string>
+    <string name="btnBack3text">Back to Feed</string>
+    <string name="txtTitle2text">Title</string>
+    <string name="txtTitle3text">Title</string>
+    <string name="txtTitle1text">Title</string>
+    <string name="txtBody1text">Body</string>
+    <string name="txtBody2text">Body</string>
+    <string name="txtBody3text">Body</string>
 </resources>

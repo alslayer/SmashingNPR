@@ -30,12 +30,8 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
     String addresss3="http://www.npr.org/rss/rss.php?id=1025";
     ProgressDialog progressDialog;
     URL url;
-    ArrayList<FeedItem> feedItems1;
-    ArrayList<FeedItem> feedItems2;
-    ArrayList<FeedItem> feedItems3;
-    ListView lstFeed1;
-    ListView lstFeed2;
-    ListView lstFeed3;
+    ArrayList<FeedItem> feedItems1, feedItems2, feedItems3;
+    ListView lstFeed1, lstFeed2, lstFeed3;
     int whichFeed;
 
     public ReadRss(Context context, ListView lstFeed1, ListView lstFeed2, ListView lstFeed3){
@@ -61,38 +57,39 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
         //Format and display in listview
         List<String> displayList1 = new ArrayList<>();
         for (int i = 0; i < feedItems1.size(); i++) {
-            String title = (String) feedItems1.get(i).getTitle();
-            String pubDate = (String) feedItems1.get(i).getPubDate();
+            String title = feedItems1.get(i).getTitle();
+            String pubDate = feedItems1.get(i).getPubDate();
             String combine = pubDate + " : " + title;
             System.out.println(combine);
             displayList1.add(combine);
         }
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, displayList1);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList1);
         lstFeed1.setAdapter(adapter1);
         List<String> displayList2 = new ArrayList<>();
         for (int i = 0; i < feedItems2.size(); i++) {
-            String title = (String) feedItems2.get(i).getTitle();
-            String pubDate = (String) feedItems2.get(i).getPubDate();
+            String title = feedItems2.get(i).getTitle();
+            String pubDate = feedItems2.get(i).getPubDate();
             String combine = pubDate + " : " + title;
             System.out.println(combine);
             displayList2.add(combine);
         }
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, displayList2);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList2);
         lstFeed2.setAdapter(adapter2);
         List<String> displayList3 = new ArrayList<>();
         for (int i = 0; i < feedItems3.size(); i++) {
-            String title = (String) feedItems3.get(i).getTitle();
-            String pubDate = (String) feedItems3.get(i).getPubDate();
+            String title = feedItems3.get(i).getTitle();
+            String pubDate = feedItems3.get(i).getPubDate();
             String combine = pubDate + " : " + title;
             System.out.println(combine);
             displayList3.add(combine);
         }
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, displayList3);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList3);
         lstFeed3.setAdapter(adapter3);
     }
 
     @Override
     protected Void doInBackground(Void... params) {
+        //Run for each feed
         whichFeed = 1;
         ProcessXML(Getdata(addresss1));
         whichFeed = 2;
@@ -103,8 +100,8 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
     }
 
     private void ProcessXML(Document data) {
+        //Determine which feed and fill it.
         if (data != null) {
-
             if (whichFeed == 1)
                 feedItems1 = new ArrayList<>();
             if (whichFeed == 2)
