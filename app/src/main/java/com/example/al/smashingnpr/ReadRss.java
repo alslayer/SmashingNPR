@@ -2,7 +2,9 @@ package com.example.al.smashingnpr;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -54,37 +56,54 @@ public class ReadRss extends AsyncTask<Void,Void,Void>{
         super.onPostExecute(aVoid);
         progressDialog.dismiss();
 
-        //Format and display in listview
-        List<String> displayList1 = new ArrayList<>();
-        for (int i = 0; i < feedItems1.size(); i++) {
-            String title = feedItems1.get(i).getTitle();
-            String pubDate = feedItems1.get(i).getPubDate();
-            String combine = pubDate + " : " + title;
-            System.out.println(combine);
-            displayList1.add(combine);
+        if (feedItems1 != null && feedItems2 != null && feedItems1 != null) {
+            //Format and display in listview
+            List<String> displayList1 = new ArrayList<>();
+            for (int i = 0; i < feedItems1.size(); i++) {
+                String title = feedItems1.get(i).getTitle();
+                String pubDate = feedItems1.get(i).getPubDate();
+                String combine = pubDate + " : " + title;
+                System.out.println(combine);
+                displayList1.add(combine);
+            }
+            ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList1);
+            lstFeed1.setAdapter(adapter1);
+            List<String> displayList2 = new ArrayList<>();
+            for (int i = 0; i < feedItems2.size(); i++) {
+                String title = feedItems2.get(i).getTitle();
+                String pubDate = feedItems2.get(i).getPubDate();
+                String combine = pubDate + " : " + title;
+                System.out.println(combine);
+                displayList2.add(combine);
+            }
+            ArrayAdapter<String> adapter2 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList2);
+            lstFeed2.setAdapter(adapter2);
+            List<String> displayList3 = new ArrayList<>();
+            for (int i = 0; i < feedItems3.size(); i++) {
+                String title = feedItems3.get(i).getTitle();
+                String pubDate = feedItems3.get(i).getPubDate();
+                String combine = pubDate + " : " + title;
+                System.out.println(combine);
+                displayList3.add(combine);
+            }
+            ArrayAdapter<String> adapter3 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList3);
+            lstFeed3.setAdapter(adapter3);
+        } else {
+            //Alert user that app could not load feeds.
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    context);
+            alertDialogBuilder.setTitle("Could not load feeds");
+            alertDialogBuilder
+                    .setMessage("Check your internet connection and restart app.")
+                    .setCancelable(false)
+                    .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int id) {
+                            // Do nothing
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList1);
-        lstFeed1.setAdapter(adapter1);
-        List<String> displayList2 = new ArrayList<>();
-        for (int i = 0; i < feedItems2.size(); i++) {
-            String title = feedItems2.get(i).getTitle();
-            String pubDate = feedItems2.get(i).getPubDate();
-            String combine = pubDate + " : " + title;
-            System.out.println(combine);
-            displayList2.add(combine);
-        }
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList2);
-        lstFeed2.setAdapter(adapter2);
-        List<String> displayList3 = new ArrayList<>();
-        for (int i = 0; i < feedItems3.size(); i++) {
-            String title = feedItems3.get(i).getTitle();
-            String pubDate = feedItems3.get(i).getPubDate();
-            String combine = pubDate + " : " + title;
-            System.out.println(combine);
-            displayList3.add(combine);
-        }
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, displayList3);
-        lstFeed3.setAdapter(adapter3);
     }
 
     @Override
